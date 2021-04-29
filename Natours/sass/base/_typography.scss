@@ -12,12 +12,19 @@
 		animation-timing-function: ease-out;
 		/* 	animation-iteration-count: 3; 
      animation-delay: 3s; */
+		@include respond(phone) {
+			font-size: 5rem;
+			letter-spacing: 1rem;
+		}
 	}
 	&--sub {
 		display: block;
 		font-size: 2rem;
 		letter-spacing: 1.7rem;
 		animation: movetotheright 1s ease-out;
+		@include respond(phone) {
+			letter-spacing: 0.5rem;
+		}
 	}
 }
 body {
@@ -27,7 +34,6 @@ body {
  */
 	line-height: 1.7;
 	color: #777;
-	padding: 2rem;
 }
 .heading-secondary {
 	font-size: 3.5rem;
@@ -44,7 +50,12 @@ body {
 	color: transparent;
 	letter-spacing: 2px;
 	transition: all 0.2s;
-
+	@include respond(tab-port) {
+		font-size: 3rem;
+	}
+	@include respond(phone) {
+		font-size: 2.5rem;
+	}
 	&:hover {
 		transform: skewY(2deg) skewX(15deg) scale(1.1);
 		text-shadow: 0.5rem 1rem 2rem rgba($color-black, 0.2);
