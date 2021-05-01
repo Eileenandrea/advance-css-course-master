@@ -11,6 +11,13 @@
 	flex: 0 0 40%;
 	display: flex;
 	justify-content: center;
+
+	@media only screen and (max-width: $dp-smallest) {
+		order: 1;
+		flex: 0 0 100%;
+		align-self: center;
+		background-color: var(--color-grey-light-2);
+	}
 	&__input {
 		font-family: inherit;
 		font-size: inherit;
@@ -111,8 +118,14 @@
 	font-size: 1.4rem;
 	margin-top: 3.5rem;
 
+	@media only screen and (max-width: $dp-small) {
+		display: flex;
+		flex-direction: row;
+		margin-top: 0;
+	}
 	&__item {
 		position: relative;
+
 		&:not(:last-child) {
 			margin-bottom: 0.5rem;
 		}
@@ -136,6 +149,13 @@
 			transform: scale(1);
 			width: 100%;
 		}
+		@media only screen and (max-width: $dp-small) {
+			flex: 1;
+
+			&:not(:last-child) {
+				margin-bottom: 0rem;
+			}
+		}
 	}
 
 	&__link {
@@ -150,6 +170,14 @@
 			align-items: center;
 			position: relative;
 			z-index: 10;
+			@media only screen and (max-width: $dp-small) {
+				justify-content: center;
+				padding: 2rem;
+			}
+			@media only screen and (max-width: $dp-xsmall) {
+				flex-direction: column;
+				padding: 1.5rem;
+			}
 		}
 	}
 	&__icon {
@@ -157,6 +185,12 @@
 		width: 1.75rem;
 		fill: currentColor;
 		margin-right: 2rem;
+		@media only screen and (max-width: $dp-xsmall) {
+			margin-right: 0;
+			height: 1.5rem;
+			width: 1.5rem;
+			margin-bottom: 0.7rem;
+		}
 	}
 }
 
@@ -167,6 +201,10 @@
 	font-size: 1.2rem;
 	text-align: center;
 	padding: 2.5rem;
+
+	@media only screen and (max-width: $dp-small) {
+		display: none;
+	}
 }
 .gallery {
 	display: flex;
@@ -182,6 +220,10 @@
 		font-weight: 300;
 		letter-spacing: 1px;
 		padding: 1.5rem 3rem;
+		@media only screen and (max-width: $dp-large) {
+			font-size: 1.8rem;
+			padding: 1.25rem 2rem;
+		}
 	}
 	&__stars {
 		margin-right: auto;
@@ -212,6 +254,9 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+		@media only screen and (max-width: $dp-large) {
+			padding: 0rem 2.25rem;
+		}
 		&-average {
 			font-size: 2.25rem;
 			font-weight: 300;
@@ -220,6 +265,9 @@
 		&count {
 			font-size: 0.8rem;
 			text-transform: uppercase;
+			@media only screen and (max-width: $dp-large) {
+				font-size: 0.5rem;
+			}
 		}
 	}
 }
@@ -236,11 +284,18 @@
 
 	&:hover {
 		color: var(--color-grey-dark-1);
+		span {
+			margin-left: 8px;
+		}
 	}
 
 	&:focus {
 		outline: none;
 		animation: pulsate 1s infinite;
+	}
+	& span {
+		margin-left: 3px;
+		transition: margin-left 0.3s;
 	}
 }
 
@@ -312,7 +367,10 @@
 		margin-right: auto;
 	}
 	&__friends {
+		display: flex;
+		flex-wrap: nowrap;
 	}
+
 	&__photo {
 		box-sizing: content-box;
 		height: 4rem;
@@ -321,5 +379,125 @@
 		border-radius: 50%;
 		border: 3px solid white;
 		margin: -1rem;
+	}
+}
+
+.review {
+	background-color: white;
+	box-shadow: var(--shadow-light);
+	padding: 3rem;
+	margin-bottom: 3.5rem;
+	position: relative;
+	&__text {
+		margin-bottom: 3rem;
+		position: relative;
+		z-index: 100;
+	}
+	&__photo {
+		width: 4.5rem;
+		height: 4.5rem;
+		border-radius: 50%;
+		margin-right: 1rem;
+	}
+	&__user {
+		display: flex;
+		align-items: center;
+	}
+	&__user-box {
+		margin-right: auto;
+	}
+	&__user-name {
+		font-size: 1.1rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		margin-bottom: 0.4rem;
+	}
+	&__user-date {
+		font-size: 1rem;
+		color: var(--color-grey-dark-3);
+	}
+	&__rating {
+		color: var(--color-primary);
+		font-size: 2.2rem;
+		font-weight: 300;
+	}
+	&::before {
+		content: "\201C";
+		position: absolute;
+		font-family: sans-serif;
+		top: -2.4rem;
+		left: -0.7rem;
+		line-height: 1;
+		font-size: 20rem;
+		color: var(--color-grey-light-2);
+	}
+	@media only screen and (max-width: $dp-small) {
+		margin-right: 2rem;
+		margin-bottom: 3rem;
+	}
+}
+
+///////////////////////////////////////////
+//CTA
+
+.cta {
+	padding: 3.5rem;
+	text-align: center;
+	&__book-now {
+		text-transform: uppercase;
+		font-size: 2rem;
+		font-weight: 300;
+		margin-bottom: 2.5rem;
+	}
+}
+.btn {
+	font-size: 1.5rem;
+	border: none;
+	font-weight: 300;
+	text-transform: uppercase;
+	border-radius: 100px;
+	background-image: linear-gradient(
+		to right,
+		var(--color-primary-light),
+		var(--color-primary-dark)
+	);
+	color: white;
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+
+	& > * {
+		display: inline-block;
+		transition: all 0.2s;
+		height: 100%;
+		width: 100%;
+	}
+	&__visible {
+		padding: 2rem 7.5rem;
+	}
+
+	&__invisible {
+		padding: 2rem 0;
+		position: absolute;
+		left: 0;
+		top: -100%;
+	}
+	&:hover &__visible {
+		transform: translateY(100%);
+	}
+
+	&:hover &__invisible {
+		top: 0;
+	}
+	&:hover {
+		background-image: linear-gradient(
+			to left,
+			var(--color-primary-light),
+			var(--color-primary-dark)
+		);
+	}
+	&:focus {
+		outline: none;
+		animation: pulsate 1s infinite;
 	}
 }
